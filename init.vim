@@ -18,7 +18,10 @@ let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
+
 Plug 'reedes/vim-pencil'
+let g:pencil#wrapModeDefault='soft'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
@@ -57,6 +60,13 @@ let mapleader="\<Space>"
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+" init file
+nnoremap <leader>fed :e $MYVIMRC<CR>
+nnoremap <leader>sb :so %<CR>
+
 " package management
 nnoremap <leader>pi :PlugInstall<CR>
 nnoremap <leader>pu :PlugUpdate<CR>
@@ -68,9 +78,21 @@ nnoremap <leader>pU :PU<CR>
 " git
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gl :Glog<CR>
 
 " searching
-nnoremap <leader>sf
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fF :Files ~<CR>
+nnoremap <leader>fr :History<CR>
+
+" buffers
+nnoremap <leader>bl :Buffers<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bd :bdelete<CR>
+
+" toggle
+nnoremap <leader>tg :Goyo<CR>
 
 
 " filetype-specific indentation
@@ -86,7 +108,6 @@ augroup END
 
 
 " writing mode
-let g:pencil#wrapModeDefault='soft'
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
