@@ -22,7 +22,10 @@ Plug 'reedes/vim-pencil'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
+
+" colorscheme
 Plug 'joshdick/onedark.vim'
+let g:onedark_terminal_italics=1
 
 " modeline
 Plug 'vim-airline/vim-airline'
@@ -41,17 +44,33 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 
-
-" keymaps
-let mapleader='\<Space>'
-
-
-" eye candies
 if has ('termguicolors')
   set termguicolors
 endif
-let g:onedark_terminal_italics=1
 colorscheme onedark
+
+
+"
+" keymaps
+"
+let mapleader="\<Space>"
+nnoremap j gj
+nnoremap k gk
+
+" package management
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pc :PlugClean<CR>
+nnoremap <leader>pd :PlugDiff<CR>
+command! PU :PlugUpgrade | PlugUpdate
+nnoremap <leader>pU :PU<CR>
+
+" git
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+
+" searching
+nnoremap <leader>sf
 
 
 " filetype-specific indentation
