@@ -27,12 +27,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
 
 " colorscheme
-Plug 'joshdick/onedark.vim'
-let g:onedark_terminal_italics=1
+Plug 'mhartington/oceanic-next'
+let g:oceanic_next_terminal_italic=1
+let g:oceanic_next_terminal_bold=1
 
 " modeline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='oceanicnext'
 let g:airline_left_sep=' '
 let g:airline_right_sep=' '
 call plug#end()
@@ -43,14 +45,15 @@ set hidden
 set cpo+=J
 
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 
 if has ('termguicolors')
   set termguicolors
 endif
-colorscheme onedark
+set background=dark
+colorscheme OceanicNext
 
 
 "
@@ -94,13 +97,15 @@ nnoremap <leader>bd :bdelete<CR>
 " toggle
 nnoremap <leader>tg :Goyo<CR>
 
+" terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
+
 
 " filetype-specific indentation
-augroup filetype_vim
-  autocmd!
-  autocmd Filetype vim set shiftwidth=2 tabstop=2 softtabstop=2
-augroup END
-
 augroup filetype_c
   autocmd!
   autocmd Filetype c,c++ set shiftwidth=8 tabstop=8 softtabstop=8
