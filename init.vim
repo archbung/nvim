@@ -85,6 +85,7 @@ nnoremap <leader>pU :PU<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gp :Gpush<CR>
 
 " searching
 nnoremap <leader>ff :Files<CR>
