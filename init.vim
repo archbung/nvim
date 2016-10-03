@@ -14,7 +14,7 @@ Plug 'tpope/vim-commentary'
 " searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore-dir={autoload,bundle,snapshots,indices,chromium-backup,chromium-back-ovfs}  -g ""'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
@@ -25,6 +25,9 @@ let g:pencil#wrapModeDefault='soft'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
+
+Plug 'neomake/neomake'
+autocmd! BufWritePost * Neomake
 
 " colorscheme
 Plug 'mhartington/oceanic-next'
@@ -96,6 +99,11 @@ nnoremap <leader>bd :bdelete<CR>
 
 " toggle
 nnoremap <leader>tg :Goyo<CR>
+
+" error checking
+nnoremap <leader>el :lopen<CR>
+nnoremap <leader>en :lnext<CR>
+nnoremap <leader>ep :lprevious<CR>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
