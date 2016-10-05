@@ -27,6 +27,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'justinmk/vim-sneak'
 
 Plug 'neomake/neomake'
+let g:neomake_haskell_enabled_makers=['hlint']
 autocmd! BufWritePost * Neomake
 
 " colorscheme
