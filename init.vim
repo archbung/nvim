@@ -14,7 +14,6 @@ Plug 'tpope/vim-commentary'
 " searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore-dir={autoload,bundle,snapshots,indices,chromium-backup,chromium-back-ovfs}  -g ""'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
@@ -31,14 +30,11 @@ let g:neomake_haskell_enabled_makers=['hlint']
 autocmd! BufWritePost * Neomake
 
 " colorscheme
-Plug 'mhartington/oceanic-next'
-let g:oceanic_next_terminal_italic=1
-let g:oceanic_next_terminal_bold=1
+Plug 'chriskempson/base16-vim'
 
 " modeline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='oceanicnext'
 let g:airline_left_sep=' '
 let g:airline_right_sep=' '
 call plug#end()
@@ -56,8 +52,9 @@ set softtabstop=2
 if has ('termguicolors')
   set termguicolors
 endif
-set background=dark
-colorscheme OceanicNext
+colorscheme base16-flat
+
+set grepprg=rg\ --vimgrep
 
 
 "
@@ -118,7 +115,8 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " filetype-specific indentation
 augroup filetype_c
   autocmd!
-  autocmd Filetype c,c++ set shiftwidth=8 tabstop=8 softtabstop=8
+  autocmd Filetype c set shiftwidth=8 tabstop=8 softtabstop=8
+  autocmd Filetype cpp set shiftwidth=8 tabstop=8 softtabstop=8
 augroup END
 
 
