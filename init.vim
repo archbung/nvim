@@ -1,75 +1,78 @@
-" bootstrap vim-plug
+" Bootstrap vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.config/nvim/bundle')
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+
+" lang support
+Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
+let g:tex_flavor = "latex"
+Plug 'neomake/neomake'
+Plug 'parsonsmatt/intero-neovim'
+Plug 'let-def/vimbufsync'
+Plug 'the-lambda-church/coquille'
+
+" org mode
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
 
 " searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-easy-align'
-
-Plug 'reedes/vim-pencil'
-let g:pencil#wrapModeDefault='soft'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
+" movement
 Plug 'justinmk/vim-sneak'
+Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'neomake/neomake'
-let g:neomake_haskell_enabled_makers=['hlint']
-autocmd! BufWritePost * Neomake
+" commenting
+Plug 'scrooloose/nerdcommenter'
 
-" colorscheme
-Plug 'chriskempson/base16-vim'
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-" modeline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_left_sep=' '
-let g:airline_right_sep=' '
+" finances
+Plug 'ledger/vim-ledger'
+
+" eye candies
+Plug 'itchyny/lightline.vim'
+let g:lightline = { 'colorscheme': 'Dracula' }
+Plug 'dracula/vim'
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 
-" open another buffer without saving current buffer
-set hidden
 
 set cpo+=J
-
+set hidden
 set expandtab
-set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set shiftwidth=2
+set scrolloff=6
 
-if has ('termguicolors')
-  set termguicolors
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-heading
 endif
-colorscheme base16-flat
 
-set grepprg=rg\ --vimgrep
+set splitbelow
+set splitright
+
+set termguicolors
+colorscheme dracula
 
 
-"
-" keymaps
-"
-let mapleader="\<Space>"
+let mapleader = "\<Space>"
+let maplocalleader = "\\"
 nnoremap j gj
 nnoremap k gk
-
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-
-" init file
-nnoremap <leader>fed :e $MYVIMRC<CR>
-nnoremap <leader>sb :so %<CR>
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>qq :q<CR>
+nnoremap <leader>fed :vsplit $MYVIMRC<CR>
 
 " package management
 nnoremap <leader>pi :PlugInstall<CR>
@@ -96,14 +99,6 @@ nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bd :bdelete<CR>
 
-" toggle
-nnoremap <leader>tg :Goyo<CR>
-
-" error checking
-nnoremap <leader>el :lopen<CR>
-nnoremap <leader>en :lnext<CR>
-nnoremap <leader>ep :lprevious<CR>
-
 " terminal
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-w>h <C-\><C-n><C-w>h
@@ -112,17 +107,14 @@ tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 
 
+augroup tamarin
+  au BufNewFile,BufRead *.spthy setf spthy
+  au BufNewFile,BufRead *.sapic setf sapic
+augroup END
+
 " filetype-specific indentation
 augroup filetype_c
   autocmd!
   autocmd Filetype c set shiftwidth=8 tabstop=8 softtabstop=8
   autocmd Filetype cpp set shiftwidth=8 tabstop=8 softtabstop=8
-augroup END
-
-
-" writing mode
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init()
 augroup END
