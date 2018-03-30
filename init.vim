@@ -1,242 +1,134 @@
-" Bootstrap vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 call plug#begin('~/.config/nvim/bundle')
 
-" lang support
-Plug 'rust-lang/rust.vim'
-Plug 'derekwyatt/vim-scala'
-Plug 'neovimhaskell/haskell-vim'
 
-Plug 'lervag/vimtex'
-Plug 'neomake/neomake'
-Plug 'parsonsmatt/intero-neovim'
-Plug 'let-def/vimbufsync'
-Plug 'the-lambda-church/coquille'
-
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'terryma/vim-multiple-cursors'
-
-" syntax checking
-Plug 'vim-syntastic/syntastic'
-
-" searching
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/vim-plug'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
+Plug 'neomake/neomake'
+"Plug 'w0rp/ale'
+"let g:ale_linters = {
+      "\ 'haskell': ['hlint','stack_build','stack_ghc'],
+      "\ }
 
-" movement
-Plug 'justinmk/vim-sneak'
-Plug 'christoomey/vim-tmux-navigator'
-
-" commenting
-Plug 'scrooloose/nerdcommenter'
-
-" git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'jceb/vim-orgmode'
+let g:org_todo_keywords=['TODO', 'FEEDBACK', 'VERIFY', '|',
+      \ 'DONE', 'DELEGATED']
+Plug 'mattn/calendar-vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
 
-" finances
+"Plug 'rust-lang/rust.vim'
+"Plug 'cespare/vim-toml'
+"Plug 'neovimhaskell/haskell-vim'
+Plug 'sheerun/vim-polyglot'
+let g:haskell_classic_highlighting=1
+let g:polyglot_disabled=['latex']
+Plug 'parsonsmatt/intero-neovim'
+"Plug 'stephpy/vim-yaml'
+
+Plug 'lervag/vimtex'
+let g:tex_flavor = "latex"
 Plug 'ledger/vim-ledger'
 
-" eye candies
+Plug 'itchyny/landscape.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'dracula/vim'
-Plug 'mhinz/vim-startify'
-Plug 'mhinz/vim-sayonara'
+let g:lightline = {
+      \ 'colorscheme': 'landscape',
+      \ }
+
 
 call plug#end()
 
+call neomake#configure#automake('w')
 
-"
-" Settings
-"
-" many of these are from @jessfraz's vimrc
 
-set noerrorbells
-set number
-set backspace=indent,eol,start
-set showcmd
+" True colors ftw
+set termguicolors
+colorscheme landscape
 
-set noswapfile
-set nobackup
-set nowritebackup
-set splitbelow
+
+" Saner split behaviour
 set splitright
-set encoding=utf-8
-set autowrite
-set autoread
-set laststatus=2
+set splitbelow
+
+set cpoptions+=J
+set autowriteall
 set hidden
-
-set ruler
-au FocusLost * :wa
-
-set fileformats=unix,dos,mac
-
-set noshowmode
-set incsearch
-set hlsearch
 set ignorecase
 set smartcase
-set lazyredraw
-
-set nocursorcolumn
-set nocursorline
-
-syntax sync minlines=256
-set re=1
-
-set conceallevel=0
-
-set wrap
-set textwidth=79
-set formatoptions=qrn1
-
-au BufRead /tmp/mutt-* set tw=72
-
-set autoindent
-set complete-=i
-set showmatch
-set smarttab
-set cpo+=J
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set nrformats-=octal
-set shiftround
-
-set notimeout
-set ttimeout
-set ttimeoutlen=10
-
-" better completion
-set complete=.,w,b,u,t
-set completeopt=longest,menuone
-
-set scrolloff=2
-set sidescrolloff=5
-set display+=lastline
-
-if has('mouse')
-    set mouse=a
-endif
-
-if has("autocmd")
-    filetype plugin indent on
-    augroup vimrcEx
-        au!
-        autocmd FileType text setlocal textwidth=78
-        autocmd BufReadPost *
-                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-                    \   exe "normal! g`\"" |
-                    \ endif
-    augroup END
-else
-endif
-
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-endif
+set formatoptions=q,r,n,1
+set noshowmode
+set scrolloff=5
 
 
-set termguicolors
-colorscheme dracula
-
-
-let mapleader = "\<Space>"
-let maplocalleader = "\\"
+let g:mapleader="\<Space>"
+let g:maplocalleader="\\"
 nnoremap j gj
 nnoremap k gk
-nnoremap <leader>fs :w<CR>
-nnoremap <leader>fed :vsplit $MYVIMRC<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fr :History<CR>
+nnoremap <leader>bb :Buffers<CR>
 
-autocmd FileType qf wincmd J
+" <C-[> is equivalent to <Esc> but easier to reach
+tnoremap <C-[> <C-\><C-n>
 
-" allow saving of files when forgot to use sudo
+" Allow saving of files when forget to sudo
 cmap w!! w !sudo tee > /dev/null %
 
-nnoremap <silent> <leader>q :Sayonara<CR>
-
-" package management
-nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>pu :PlugUpdate<CR>
-nnoremap <leader>pc :PlugClean<CR>
-nnoremap <leader>pd :PlugDiff<CR>
-command! PU :PlugUpgrade | PlugUpdate
-nnoremap <leader>pU :PU<CR>
-
-" git
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gp :Gpush<CR>
-
-" searching
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>fF :Files ~<CR>
-nnoremap <leader>fr :History<CR>
-
-" buffers
-nnoremap <leader>bl :Buffers<CR>
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bd :bdelete<CR>
-
-" terminal
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-w>h <C-\><C-n><C-w>h
-tnoremap <C-w>j <C-\><C-n><C-w>j
-tnoremap <C-w>k <C-\><C-n><C-w>k
-tnoremap <C-w>l <C-\><C-n><C-w>l
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Ggrep
+        \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+  command! -bang Colors
+        \ call fzf#vim#colors({'left': '15%', 'options:': '--reverse --margin 30%,0'}, <bang>0)
+  command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+        \   <bang>0 ? fzf#vim#with_preview('up:60%')
+        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+        \   <bang>0)
+endif
 
 
-"
-" filetype settings
-"
+augroup basic
+  autocmd!
 
-augroup tamarin
-    au BufNewFile,BufRead *.spthy setf spthy
-    au BufNewFile,BufRead *.sapic setf sapic
+  " Go to insert mode by default on terminal buffers
+  autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+  " Set textwidth for mutt buffers
+  autocmd BufRead /tmp/mutt-* setlocal textwidth=72
+
+  " Remember last cursor position
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exec "normal! g`\"" |
+        \ endif
+
+  " Basic stuffs for vim configs
+  autocmd Filetype vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
-augroup filetype_c
-    autocmd!
-    autocmd Filetype c set shiftwidth=8 tabstop=8 softtabstop=8
-    autocmd Filetype cpp set shiftwidth=8 tabstop=8 softtabstop=8
+augroup haskell
+  autocmd!
+  autocmd Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+  autocmd Filetype cabal setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
-
-
-"
-" plugin settings
-"
-" latex
-let g:tex_flavor = "latex"
-
-
-" auto strip whitespace except for file with extention blacklisted
-let blacklist = ['markdown', 'md']
-autocmd BufWritePre * StripWhitespace
-
-
-" lightline
-let g:lightline = { 'colorscheme': 'Dracula' }
-
-
-" nerdtree
-" for toggling
-nmap <C-n> :NERDTreeToggle<CR>
-noremap <Leader>n :NERDTreeToggle<cr>
-noremap <Leader>f :NERDTreeFind<cr>
-
-let NERDTreeShowHidden=1
-
-let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
-
-" close nerdtree and vim on close file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup yaml
+  autocmd!
+  autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+augroup END
