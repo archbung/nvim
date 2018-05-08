@@ -1,7 +1,7 @@
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  au VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 
@@ -37,6 +37,10 @@ Plug 'sheerun/vim-polyglot'
 let g:haskell_classic_highlighting=1
 let g:polyglot_disabled=['latex']
 Plug 'parsonsmatt/intero-neovim'
+let g:intero_start_immediately=0
+let g:intero_type_on_hover=1
+let g:intero_window_size=15
+"let g:intero_vertical_split=1
 "Plug 'stephpy/vim-yaml'
 
 Plug 'lervag/vimtex'
@@ -73,6 +77,8 @@ set formatoptions=q,r,n,1
 set noshowmode
 set scrolloff=5
 
+set updatetime=1000
+
 
 let g:mapleader="\<Space>"
 let g:maplocalleader="\\"
@@ -104,31 +110,53 @@ endif
 
 
 augroup basic
-  autocmd!
+  au!
 
   " Go to insert mode by default on terminal buffers
-  autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
   " Set textwidth for mutt buffers
-  autocmd BufRead /tmp/mutt-* setlocal textwidth=72
+  au BufRead /tmp/mutt-* setlocal textwidth=72
 
   " Remember last cursor position
-  autocmd BufReadPost *
+  au BufReadPost *
         \ if line("'\"") > 1 && line("'\"") <= line("$") |
         \   exec "normal! g`\"" |
         \ endif
 
   " Basic stuffs for vim configs
-  autocmd Filetype vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  au Filetype vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
 augroup haskell
-  autocmd!
-  autocmd Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-  autocmd Filetype cabal setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  au!
+  au Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+  au Filetype cabal setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+  " Background process
+  au Filetype haskell nnoremap <silent> <leader>is :InteroStart<CR>
+  au Filetype haskell nnoremap <silent> <leader>ik :InteroKill<CR>
+  " Open intero in horizontal split
+  au Filetype haskell nnoremap <silent> <leader>io :InteroOpen<CR>
+  " Open intero in vertical split
+  au Filetype haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
+  au Filetype haskell nnoremap <silent> <leader>ih :InteroHide<CR>
+  " Reloading
+  au Filetype haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
+  " Load individual modules
+  au Filetype haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
+  au Filetype haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
+  " Type-related info
+  au Filetype haskell map <silent> <leader>t <Plug>InteroGenericType
+  au Filetype haskell map <silent> <leader>T <Plug>InteroType
+  au Filetype haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
+  " Navigation
+  au Filetype haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
+  " Managing targets
+  au Filetype haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
 augroup END
 
 augroup yaml
-  autocmd!
-  autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  au!
+  au Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
