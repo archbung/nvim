@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/bundle')
 
 Plug 'junegunn/vim-plug'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 Plug 'neomake/neomake'
@@ -47,10 +48,13 @@ Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 Plug 'ledger/vim-ledger'
 
-Plug 'itchyny/landscape.vim'
+Plug 'nanotech/jellybeans.vim'
+let g:jellybeans_overrides = {
+      \ 'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+      \ }
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'landscape',
+      \ 'colorscheme': 'jellybeans',
       \ }
 
 
@@ -61,7 +65,7 @@ call neomake#configure#automake('w')
 
 " True colors ftw
 set termguicolors
-colorscheme landscape
+colorscheme jellybeans
 
 
 " Saner split behaviour
@@ -78,6 +82,7 @@ set noshowmode
 set scrolloff=5
 
 set updatetime=1000
+set shell=/usr/bin/bash
 
 
 let g:mapleader="\<Space>"
