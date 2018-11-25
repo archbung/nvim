@@ -4,50 +4,19 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   au VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
 call plug#begin('~/.config/nvim/bundle')
-
-
 Plug 'junegunn/vim-plug'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
-Plug 'neomake/neomake'
-"Plug 'w0rp/ale'
-"let g:ale_linters = {
-      "\ 'haskell': ['hlint','stack_build','stack_ghc'],
-      "\ }
-
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
-Plug 'jceb/vim-orgmode'
-let g:org_todo_keywords=['TODO', 'FEEDBACK', 'VERIFY', '|',
-      \ 'DONE', 'DELEGATED']
-Plug 'mattn/calendar-vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'airblade/vim-gitgutter'
-
-"Plug 'rust-lang/rust.vim'
-"Plug 'cespare/vim-toml'
-"Plug 'neovimhaskell/haskell-vim'
 Plug 'sheerun/vim-polyglot'
-let g:haskell_classic_highlighting=1
+let g:haskell_classic_highlighting = 1
 let g:polyglot_disabled=['latex']
-Plug 'parsonsmatt/intero-neovim'
-let g:intero_start_immediately=0
-let g:intero_type_on_hover=1
-let g:intero_window_size=15
-"let g:intero_vertical_split=1
-"Plug 'stephpy/vim-yaml'
-
 Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 Plug 'ledger/vim-ledger'
-
 Plug 'nanotech/jellybeans.vim'
 let g:jellybeans_overrides = {
       \ 'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
@@ -56,19 +25,14 @@ Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
-
-
 call plug#end()
 
-call neomake#configure#automake('w')
-
-
-" True colors ftw
+" True colors
 set termguicolors
 colorscheme jellybeans
 
 
-" Saner split behaviour
+" Better split behaviour
 set splitright
 set splitbelow
 
@@ -82,7 +46,7 @@ set noshowmode
 set scrolloff=5
 
 set updatetime=1000
-set shell=/usr/bin/bash
+set shell=/usr/bin/zsh
 
 
 let g:mapleader="\<Space>"
@@ -135,30 +99,7 @@ augroup END
 
 augroup haskell
   au!
-  au Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-  au Filetype cabal setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
-  " Background process
-  au Filetype haskell nnoremap <silent> <leader>is :InteroStart<CR>
-  au Filetype haskell nnoremap <silent> <leader>ik :InteroKill<CR>
-  " Open intero in horizontal split
-  au Filetype haskell nnoremap <silent> <leader>io :InteroOpen<CR>
-  " Open intero in vertical split
-  au Filetype haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
-  au Filetype haskell nnoremap <silent> <leader>ih :InteroHide<CR>
-  " Reloading
-  au Filetype haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
-  " Load individual modules
-  au Filetype haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
-  au Filetype haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
-  " Type-related info
-  au Filetype haskell map <silent> <leader>t <Plug>InteroGenericType
-  au Filetype haskell map <silent> <leader>T <Plug>InteroType
-  au Filetype haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
-  " Navigation
-  au Filetype haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
-  " Managing targets
-  au Filetype haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
+  au Filetype haskell setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 augroup END
 
 augroup yaml
