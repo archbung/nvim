@@ -99,7 +99,7 @@ augroup END
 
 augroup haskell
   au!
-  au Filetype haskell setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+  au Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 augroup END
 
 augroup yaml
