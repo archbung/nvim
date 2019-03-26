@@ -16,6 +16,8 @@ let g:haskell_classic_highlighting = 1
 let g:polyglot_disabled=['latex']
 Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
+let g:vimtex_view_method = "zathura"
+let g:vimtex_quickfix_mode=0
 Plug 'ledger/vim-ledger'
 Plug 'nanotech/jellybeans.vim'
 let g:jellybeans_overrides = {
