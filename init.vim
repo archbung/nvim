@@ -18,6 +18,10 @@ Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_quickfix_mode=0
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 Plug 'ledger/vim-ledger'
 Plug 'nanotech/jellybeans.vim'
 let g:jellybeans_overrides = {
