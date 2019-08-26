@@ -17,25 +17,18 @@ let g:polyglot_disabled=['latex']
 Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
-let g:vimtex_quickfix_mode=0
+let g:vimtex_quickfix_mode = 0
 Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 Plug 'ledger/vim-ledger'
-Plug 'nanotech/jellybeans.vim'
-let g:jellybeans_overrides = {
-      \ 'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
-      \ }
-Plug 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ }
+Plug 'dracula/vim'
 call plug#end()
 
 " True colors
 set termguicolors
-colorscheme jellybeans
+colorscheme dracula
 
 
 " Better split behaviour
