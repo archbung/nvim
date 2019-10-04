@@ -1,3 +1,4 @@
+" Bootstrap vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -5,15 +6,23 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/bundle')
+
+" Essentials
 Plug 'junegunn/vim-plug'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
+
+" Lang supports
 Plug 'sheerun/vim-polyglot'
 let g:haskell_classic_highlighting = 1
-let g:polyglot_disabled=['latex']
+let g:polyglot_disabled=['latex', 'rust']
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+Plug 'racer-rust/vim-racer'
+Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
@@ -24,11 +33,16 @@ let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 let g:tex_fold_enabled = 1
 Plug 'zhimsel/vim-stay'
+
+" Snippets and completion
 Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-Plug 'ledger/vim-ledger'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+
+" Eye candies
 Plug 'dracula/vim'
 call plug#end()
 
@@ -41,7 +55,7 @@ colorscheme dracula
 set splitright
 set splitbelow
 
-set cpoptions+=J
+set cpoptions+=J          " A sentence must be followed by two spaces
 set autowriteall
 set hidden
 set ignorecase
@@ -96,12 +110,6 @@ augroup basic
   " Set textwidth for mutt buffers
   au BufRead /tmp/mutt-* setlocal textwidth=72
 
-  " Remember last cursor position
-  au BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \   exec "normal! g`\"" |
-        \ endif
-
   " Basic stuffs for vim configs
   au Filetype vim setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
@@ -109,6 +117,14 @@ augroup END
 augroup haskell
   au!
   au Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+augroup END
+
+augroup rust
+  au!
+  au Filetype rust nnoremap <localleader>gd <Plug>(rust-def)
+  au Filetype rust nnoremap <localleader>gs <Plug>(rust-def-split)
+  au Filetype rust nnoremap <localleader>gv <Plug>(rust-def-vertical)
+  au Filetype rust nnoremap <localleader>gx <Plug>(rust-doc)
 augroup END
 
 augroup yaml
