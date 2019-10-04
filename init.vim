@@ -17,7 +17,13 @@ let g:polyglot_disabled=['latex']
 Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
-let g:vimtex_quickfix_mode = 0
+let g:vimtex_quickfix_mode = 1
+Plug 'Konfekt/FastFold'
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+let g:tex_fold_enabled = 1
+Plug 'zhimsel/vim-stay'
 Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -43,6 +49,10 @@ set smartcase
 set formatoptions=q,r,n,1
 set noshowmode
 set scrolloff=5
+
+" Folding
+set viewoptions=cursor,folds,slash,unix
+set fillchars=fold:\ 
 
 set updatetime=1000
 set shell=/usr/bin/zsh
