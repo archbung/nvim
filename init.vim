@@ -18,8 +18,8 @@ Plug 'airblade/vim-gitgutter'
 " Lang supports
 Plug 'sheerun/vim-polyglot'
 let g:haskell_classic_highlighting = 1
-let g:polyglot_disabled=['latex', 'rust']
-Plug 'rust-lang/rust.vim'
+" vim-polyglot uses latexbox instead of vimtex
+let g:polyglot_disabled=['latex']
 let g:rustfmt_autosave = 1
 Plug 'racer-rust/vim-racer'
 Plug 'ledger/vim-ledger'
