@@ -20,7 +20,6 @@ Plug 'sheerun/vim-polyglot'
 let g:haskell_classic_highlighting = 1
 " vim-polyglot uses latexbox instead of vimtex
 let g:polyglot_disabled=['latex']
-let g:rustfmt_autosave = 1
 Plug 'racer-rust/vim-racer'
 Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
@@ -34,13 +33,17 @@ let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 let g:tex_fold_enabled = 1
 Plug 'zhimsel/vim-stay'
 
-" Snippets and completion
+" Snippets, completion, and syntax checking
 Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug 'dense-analysis/ale'
+let g:ale_fix_on_save = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " Eye candies
 Plug 'dracula/vim'
@@ -72,12 +75,14 @@ set updatetime=1000
 set shell=/usr/bin/zsh
 
 
+" Keybindings
 let g:mapleader="\<Space>"
 let g:maplocalleader="\\"
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fr :History<CR>
+nnoremap <leader>sr :Rg<CR>
 nnoremap <leader>bb :Buffers<CR>
 
 " <C-[> is equivalent to <Esc> but easier to reach
@@ -117,14 +122,6 @@ augroup END
 augroup haskell
   au!
   au Filetype haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-augroup END
-
-augroup rust
-  au!
-  au Filetype rust nnoremap <localleader>gd <Plug>(rust-def)
-  au Filetype rust nnoremap <localleader>gs <Plug>(rust-def-split)
-  au Filetype rust nnoremap <localleader>gv <Plug>(rust-def-vertical)
-  au Filetype rust nnoremap <localleader>gx <Plug>(rust-doc)
 augroup END
 
 augroup yaml
