@@ -11,6 +11,9 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'junegunn/vim-plug'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
