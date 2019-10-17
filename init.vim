@@ -49,12 +49,12 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
 " Eye candies
-Plug 'dracula/vim'
+Plug 'Rigellute/rigel'
 call plug#end()
 
 " True colors
 set termguicolors
-colorscheme dracula
+colorscheme rigel
 
 
 " Better split behaviour
