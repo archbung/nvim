@@ -17,6 +17,12 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
+Plug 'zhimsel/vim-stay'
+Plug 'Konfekt/FastFold'
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+let g:tex_fold_enabled = 1
 
 " Lang supports
 Plug 'sheerun/vim-polyglot'
@@ -29,13 +35,8 @@ Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_quickfix_mode = 1
-Plug 'Konfekt/FastFold'
-let g:fastfold_savehook = 1
-let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
-let g:tex_fold_enabled = 1
-Plug 'zhimsel/vim-stay'
 Plug 'jalvesaq/Nvim-R'
+Plug 'davidhalter/jedi-vim'
 
 " Snippets, completion, and syntax checking
 Plug 'sirver/ultisnips'
