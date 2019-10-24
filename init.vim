@@ -22,7 +22,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 let g:haskell_classic_highlighting = 1
 " vim-polyglot uses latexbox instead of vimtex
-let g:polyglot_disabled=['latex']
+let g:polyglot_disabled=['latex', 'r\-lang']
 Plug 'racer-rust/vim-racer'
 Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
@@ -35,6 +35,7 @@ let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 let g:tex_fold_enabled = 1
 Plug 'zhimsel/vim-stay'
+Plug 'jalvesaq/Nvim-R'
 
 " Snippets, completion, and syntax checking
 Plug 'sirver/ultisnips'
