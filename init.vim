@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'junegunn/vim-plug'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
@@ -132,4 +133,14 @@ augroup END
 augroup yaml
   au!
   au Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+augroup END
+
+function! Flogdiff()
+  let first_commit = flog#get_commit_data(line("'<")).short_commit_hash
+  let last_commit = flog#get_commit_data(line("'>")).short_commit_hash
+  call flog#git('vertical belowright', '!', 'diff ' . first_commit . ' ' . last_commit)
+endfunction
+
+augroup flog
+  autocmd FileType floggraph vno gd :<C-U>call Flogdiff()<CR>
 augroup END
