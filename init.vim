@@ -11,7 +11,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'junegunn/vim-plug'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog'
+Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
@@ -140,7 +140,3 @@ function! Flogdiff()
   let last_commit = flog#get_commit_data(line("'>")).short_commit_hash
   call flog#git('vertical belowright', '!', 'diff ' . first_commit . ' ' . last_commit)
 endfunction
-
-augroup flog
-  autocmd FileType floggraph vno gd :<C-U>call Flogdiff()<CR>
-augroup END
