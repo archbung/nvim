@@ -134,9 +134,3 @@ augroup yaml
   au!
   au Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
-
-function! Flogdiff()
-  let first_commit = flog#get_commit_data(line("'<")).short_commit_hash
-  let last_commit = flog#get_commit_data(line("'>")).short_commit_hash
-  call flog#git('vertical belowright', '!', 'diff ' . first_commit . ' ' . last_commit)
-endfunction
