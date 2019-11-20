@@ -63,6 +63,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'davidhalter/jedi'
 Plug 'racer-rust/vim-racer'
 
 
@@ -72,11 +73,11 @@ let g:ale_fix_on_save = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_haskell_stack_ghc_options = '-fno-code -v0 -Wall -Wcompat -Wincomplete-uni-patterns -Wredundant-constraints -Wincomplete-record-updates'
 
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \}
-
 
 " Eye candies
 Plug 'Rigellute/rigel'
