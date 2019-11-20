@@ -21,6 +21,7 @@ let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'psliwka/vim-smoothie'
 
 " Git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
