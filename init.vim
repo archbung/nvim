@@ -73,11 +73,11 @@ let g:ale_fix_on_save = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_haskell_stack_ghc_options = '-fno-code -v0 -Wall -Wcompat -Wincomplete-uni-patterns -Wredundant-constraints -Wincomplete-record-updates'
-
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \}
+let g:ale_haskell_stack_ghc_options = '-fno-code -v0 -Wall -Wcompat
+      \ -Wincomplete-uni-patterns -Wredundant-constraints -Wincomplete-record-updates'
 
 " Eye candies
 Plug 'arcticicestudio/nord-vim'
@@ -90,7 +90,8 @@ let g:lightline = {
       \   'left': [[ 'mode', 'paste', ],
       \            [ 'gitbranch', 'readonly', 'filename', ]],
       \   'right':
-      \     [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', ]]
+      \     [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', ],
+      \      [ 'lineinfo'], [ 'percent' ], [ 'filetype']]
       \   },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
