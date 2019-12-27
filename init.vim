@@ -76,8 +76,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \}
-let g:ale_haskell_stack_ghc_options = '-fno-code -v0 -Wall -Wcompat
-      \ -Wincomplete-uni-patterns -Wredundant-constraints -Wincomplete-record-updates'
 
 " Eye candies
 Plug 'arcticicestudio/nord-vim'
