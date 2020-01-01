@@ -16,12 +16,30 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/gv.vim'
-Plug 'junegunn/fzf.vim'
-let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_history_dir = '~/.local/share/fzf-history'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'psliwka/vim-smoothie'
+Plug 'junegunn/fzf.vim'
+let g:fzf_buffers_jump = 1
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let $FZF_DEFAULT_OPTS='--layout=reverse'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = &lines - 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': 1,
+        \ 'col': col,
+        \ 'width': width,
+        \ 'height': height,
+        \ }
+  call nvim_open_win(buf, v:true, opts)
+endfunction
 
 " Git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
