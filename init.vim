@@ -96,12 +96,12 @@ let g:ale_fixers = {
       \}
 
 " Eye candies
-Plug 'arcticicestudio/nord-vim'
+Plug 'joshdick/onedark.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [[ 'mode', 'paste', ],
       \            [ 'gitbranch', 'readonly', 'filename', ]],
@@ -140,7 +140,7 @@ call plug#end()
 
 " Options
 set termguicolors
-colorscheme nord
+colorscheme onedark
 
 set splitright splitbelow
 set cpoptions+=J
