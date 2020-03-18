@@ -17,7 +17,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/gv.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'psliwka/vim-smoothie'
 Plug 'junegunn/fzf.vim'
 let g:fzf_buffers_jump = 1
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -40,6 +39,7 @@ function! FloatingFZF()
         \ }
   call nvim_open_win(buf, v:true, opts)
 endfunction
+Plug 'vimwiki/vimwiki'
 
 " Git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -69,7 +69,6 @@ Plug 'lervag/vimtex'
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_quickfix_mode = 1
-Plug 'jalvesaq/Nvim-R'
 
 
 " Snippets and completion
@@ -78,42 +77,7 @@ Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-set hidden
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set shortmess+=c
-set signcolumn=yes
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ?"\<C-n>":
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
-
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-reference)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+Plug 'dense-analysis/ale'
 
 
 " Eye candies
@@ -121,6 +85,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
+Plug 'psliwka/vim-smoothie'
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {
@@ -173,6 +138,8 @@ let g:maplocalleader="\\"
 
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>bb :Buffers<CR>
+nnoremap j gj
+nnoremap k gk
 tnoremap <C-[> <C-\><C-n>
 
 augroup basic
