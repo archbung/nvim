@@ -40,6 +40,8 @@ function! FloatingFZF()
   call nvim_open_win(buf, v:true, opts)
 endfunction
 Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/org/wiki/',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -64,8 +66,7 @@ command! -bang -nargs=? -complete=dir Files
 " Lang support
 Plug 'sheerun/vim-polyglot'
 let g:haskell_classic_highlighting = 1
-let g:polyglot_disabled=['latex', 'r\-lang']  " vim-polyglot uses latexbox instead of vimtex
-Plug 'lervag/vimtex'
+let g:polyglot_disabled=['r\-lang']
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
 let g:vimtex_quickfix_mode = 1
