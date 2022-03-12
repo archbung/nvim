@@ -1,8 +1,7 @@
--- vim:set ts=2 sts=2 sw=2 et:
 local cmd, o_s = vim.cmd, vim.o
 local map_key = vim.api.nvim_set_keymap
 
-local function opt(o, v, scopes)
+local function opt(o, v, scope)
   scopes = scopes or { o_s }
   for _, s in ipairs(scopes) do s[o] = v end
 end

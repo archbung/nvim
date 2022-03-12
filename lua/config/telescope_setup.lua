@@ -1,5 +1,6 @@
-local map = require('config.utils').map
+local map = require('utils').map
 local silent = { silent = true }
+
 map('n', '<leader>bb', [[<cmd>Telescope buffers show_all_buffers=true theme=get_dropdown<cr>]], silent)
 map('n', '<leader>fr', [[<cmd>Telescope frecency theme=get_dropdown<cr>]], silent)
 map('n', '<leader>fg', [[<cmd>Telescope git_files theme=get_dropdown<cr>]], silent)
