@@ -123,5 +123,10 @@ return require('packer').startup(function(use)
   }
 
   -- LaTeX
-  use 'lervag/vimtex'
+  use {
+    'lervag/vimtex',
+    opt = true,
+    ft = 'tex',
+    config = [[require('config/vimtex')]]
+  }
 end)
