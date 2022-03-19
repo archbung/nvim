@@ -78,7 +78,7 @@ return require('packer').startup(function(use)
       },
       run = ':TSUpdate'
     },
-    'navarasu/onedark.nvim',
+    'rebelot/kanagawa.nvim',
     {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
