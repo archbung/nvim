@@ -1,4 +1,9 @@
-require('core/settings')
-require('core/keymaps')
-require('plugin')
-require('core/colors')
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.config.impatient"
+require "user.config.autopairs"
+require "user.config.treesitter"
+require "user.config.telescope"
+require "user.config.neorg"
+require "user.config.whichkey"
