@@ -95,6 +95,14 @@ local mappings = {
     },
   },
 
+  g = {
+    name = "Git",
+    g = {
+      "<cmd>Neogit<cr>",
+      "Open Neogit",
+    },
+  },
+
   s = {
     name = "Search",
     p = {

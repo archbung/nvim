@@ -78,6 +78,18 @@ return packer.startup(function(use)
     requires = "nvim-treesitter/nvim-treesitter",
   }
 
+  use {
+    "nvim-treesitter/nvim-treesitter-context",
+    commit = "c46a8a0a60412a8fe43aa6bd3a01845c46de6bf2",
+    requires = "nvim-treesitter/nvim-treesitter",
+  }
+
+  use {
+    "p00f/nvim-ts-rainbow",
+    commig = "1ec3f880585c644ddd50a51502c59f4e36f03e62",
+    requires = "nvim-treesitter/nvim-treesitter",
+  }
+
 
   -- Telescope
   use {
@@ -113,6 +125,42 @@ return packer.startup(function(use)
     "folke/which-key.nvim",
     commit = "6885b669523ff4238de99a7c653d47b081b5506d",
   }  
+
+
+  -- Git
+  use {
+    "TimUntersberger/neogit",
+    commit = "74c9e29b61780345d3ad9d7a4a4437607caead4a",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  }
+
+  use {
+    "lewis6991/gitsigns.nvim",
+    commit = "5df4ac570e796f3ccf1d9c0445c131f6225bde8c",
+  }
+
+
+  -- Eye candies
+  use {
+    "catppuccin/nvim",
+    commit = "0447ffc0050c43a0d7a23ce3640d22a5ef781605",
+    as = "catppuccin",
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    commit = "db7cbcb40cc00fc5d6074d7569fb37197705e7f6",
+  }
+
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+    },
+    tag = "nightly",
+  }
 
 
   -- Lang

@@ -29,6 +29,10 @@ treesitter.setup {
   indent = {
     enable = true,
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+  },
   refactor = {
     highlight_definitions = {
       enable = true,
@@ -88,4 +92,11 @@ treesitter.setup {
       },
     },
   },
+}
+
+local status_ok, treesitter_context = pcall(require, "treesitter-context")
+if not status_ok then return end
+
+treesitter_context.setup {
+  enable = true,
 }
