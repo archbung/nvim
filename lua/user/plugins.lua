@@ -101,6 +101,18 @@ return packer.startup(function(use)
   }
 
 
+  -- Completion
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-cmdline"
+
+
+  -- Snippets
+  use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
+
+
   -- which-key
   use "folke/which-key.nvim"
 
