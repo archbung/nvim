@@ -67,9 +67,10 @@ local opts = {
 }
 
 local mappings = {
-  ["w"] = { "<cmd>w!<cr>", "Save",},
-  ["q"] = { "<cmd>q!<cr>", "Quit",},
-  ["h"] = { "<cmd>nohlsearch<cr>", "No highlight",},
+  ["w"] = { "<cmd>w!<cr>", "Save", },
+  ["q"] = { "<cmd>q!<cr>", "Quit", },
+  ["h"] = { "<cmd>nohlsearch<cr>", "No highlight", },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer", },
 
   b = {
     name = "Buffers",
@@ -131,6 +132,10 @@ local mappings = {
       "Find in project",
     },
     -- TODO: Telescope current_buffer_fuzzy_find does not work yet
+    -- b = {
+    --   "<cmd>Telescope current_buffer_fuzzy_find theme=get_dropdown<cr>",
+    --   "Find in buffer",
+    -- }
   },
 }
 

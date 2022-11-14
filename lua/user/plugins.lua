@@ -29,8 +29,8 @@ packer.init {
   max_jobs = nil,
   display = {
     open_fn = function()
-      return require("packer.util").float({ 
-        border = "single", 
+      return require("packer.util").float({
+        border = "single",
       })
     end,
   }
@@ -39,6 +39,8 @@ packer.init {
 return packer.startup(function(use)
 
   use "wbthomason/packer.nvim"
+
+  use "echasnovski/mini.nvim"
 
   use "nathom/filetype.nvim"
 
@@ -53,12 +55,12 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
 
-  use { 
-    "nvim-treesitter/nvim-treesitter-refactor", 
+  use {
+    "nvim-treesitter/nvim-treesitter-refactor",
     requires = "nvim-treesitter/nvim-treesitter",
   }
 
-  use { 
+  use {
     "nvim-treesitter/nvim-treesitter-textobjects",
     requires = "nvim-treesitter/nvim-treesitter",
   }
@@ -97,7 +99,7 @@ return packer.startup(function(use)
     requires = {
       "nvim-telescope/telescope.nvim",
     },
-    run = "git submodule update --init --recursive", 
+    run = "git submodule update --init --recursive",
   }
 
 
@@ -143,14 +145,24 @@ return packer.startup(function(use)
     as = "catppuccin",
   }
 
+  use "folke/tokyonight.nvim"
+
   use "lukas-reineke/indent-blankline.nvim"
 
   use {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     requires = {
       "kyazdani42/nvim-web-devicons",
     },
     tag = "nightly",
+  }
+
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+      opt = true,
+    },
   }
 
   if PACKER_BOOTSTRAP then
