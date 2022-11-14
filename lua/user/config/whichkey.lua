@@ -81,12 +81,12 @@ local mappings = {
 
   f = {
     name = "Files",
-    f = { 
-      "<cmd>Telescope find_files theme=get_dropdown<cr>", 
+    f = {
+      "<cmd>Telescope find_files theme=get_dropdown<cr>",
       "Find files",
     },
     r = {
-      "<cmd>Telescope frecency theme=get_dropdown<cr>", 
+      "<cmd>Telescope frecency theme=get_dropdown<cr>",
       "Recent files",
     },
     g = {
@@ -101,6 +101,27 @@ local mappings = {
       "<cmd>Neogit<cr>",
       "Open Neogit",
     },
+  },
+
+  l = {
+    name = "LSP",
+    a = { "<cmd>lua vim.sp.buf.code_action()<cr>", "Code Action", },
+    d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics", },
+    w = { "<cmd>Telescope diagnostics<cr>", "Workspace diagnostics", },
+    i = { "<cmd>LspInfo<cr>", "Info", },
+    I = { "<cmd>LspInstallInfo<cr>", "Installer Info", },
+    j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic", },
+    k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic", },
+    q = { "<cmd>lua vim.lsp.diagnostic.setloclist()<cr>", "Quickfix", },
+  },
+
+  p = {
+    name = "Packer",
+    c = { "<cmd>PackerCompile<cr>", "Compile" },
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    s = { "<cmd>PackerSync<cr>", "Sync" },
+    S = { "<cmd>PackerStatus<cr>", "Status" },
+    u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
   s = {
