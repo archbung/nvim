@@ -37,3 +37,4 @@ keymap("x", "<a-k>", ":m '<-2<cr>gv-gv", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+

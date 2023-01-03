@@ -42,29 +42,3 @@ vim.opt.whichwrap:prepend "<,>,[,],h,l"
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
-local disabled_builtins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit",
-  "netrwSettings",
-}
-
-for _, plugin in pairs(disabled_builtins) do
-  vim.g["loaded_" .. plugin] = 1
-end
