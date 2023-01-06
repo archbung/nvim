@@ -9,8 +9,16 @@ return {
     { "hrsh7th/cmp-cmdline", enabled = cmdline, },
     { "dmitmel/cmp-cmdline-history", enabled = cmdline, },
     "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip",
-    { 
+    {
+      "L3MON4D3/LuaSnip",
+      config = function()
+        require("luasnip").setup({
+          history = true,
+          enable_autosnippets = true,
+        })
+      end,
+    },
+    {
       "rafamadriz/friendly-snippets",
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
@@ -54,15 +62,10 @@ return {
       TypeParameter = "",
     }
 
-    luasnip.setup({
-      history = true,
-      enable_autosnippets = true,
-    })
-
     cmp.setup({
       mapping = {
-        ["<c-k>"] = cmp.mapping.select_prev_item(), 
-        ["<c-j>"] = cmp.mapping.select_next_item(), 
+        ["<c-k>"] = cmp.mapping.select_prev_item(),
+        ["<c-j>"] = cmp.mapping.select_next_item(),
         ["<c-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c", }),
         ["<c-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c", }),
         ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c", }),

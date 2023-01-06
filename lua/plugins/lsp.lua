@@ -11,7 +11,6 @@ return {
     local servers = {
       "sumneko_lua",
       "pyright",
-      "hls",
     }
 
     local mason_settings = {
