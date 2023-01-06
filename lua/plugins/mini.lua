@@ -14,6 +14,9 @@ return {
       },
     })
 
+    require("mini.indentscope").setup()
+    require("mini.cursorword").setup()
+
     local ai = require("mini.ai")
     ai.setup({
       n_lines = 500,
@@ -47,6 +50,7 @@ return {
     map("o", "block")
 
     require("mini.animate").setup()
+    require("mini.map").setup()
 
   end,
 }
