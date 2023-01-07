@@ -98,8 +98,8 @@ return {
 
       g = {
         name = "Git",
-        g = { "<cmd>Neogit<cr>", "Open Neogit", },
-        s = { "<cmd>Telescope git_status<cr>", "Status", },
+        g = { "<cmd>Git<cr>", "Fugitive", },
+        s = { "<cmd>Git status<cr>", "Status", },
       },
 
       l = {
@@ -131,7 +131,7 @@ return {
         b = {
           "<cmd>Telescope current_buffer_fuzzy_find theme=get_dropdown<cr>",
           "Find in buffer",
-        }
+        },
       },
     }
 
