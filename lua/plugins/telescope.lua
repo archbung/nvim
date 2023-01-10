@@ -3,7 +3,7 @@ return {
   cmd = { "Telescope", },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
     {
       "nvim-telescope/telescope-frecency.nvim",
       dependencies = "kkharji/sqlite.lua",
