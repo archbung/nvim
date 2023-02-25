@@ -9,8 +9,8 @@ return {
   },
   config = function()
     local servers = {
-      "sumneko_lua",
-      "pyright",
+      "lua_ls",
+      "hls",
     }
 
     local mason_settings = {
@@ -21,7 +21,7 @@ return {
 
     require("mason").setup(mason_settings)
     require("mason-lspconfig").setup({
-      ensure_installed = servers,
+      ensure_installed = { "lua_ls", },
       automatic_installation = true,
     })
 
