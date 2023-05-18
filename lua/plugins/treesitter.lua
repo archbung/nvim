@@ -12,7 +12,7 @@ return {
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "haskell", "rust", "python", "lua", "racket", "clojure", "elixir",
-        "fish", "bash", "nix", "dockerfile", "latex",
+        "fish", "bash", "nix", "dockerfile", "latex", "agda",
       },
       highlight = {
         enable = true,
