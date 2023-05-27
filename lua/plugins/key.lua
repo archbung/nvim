@@ -96,12 +96,6 @@ return {
         },
       },
 
-      g = {
-        name = "Git",
-        g = { "<cmd>Git<cr>", "Fugitive", },
-        s = { "<cmd>Git status<cr>", "Status", },
-      },
-
       l = {
         name = "LSP",
         a = { "<cmd>lua vim.sp.buf.code_action()<cr>", "Code Action", },
