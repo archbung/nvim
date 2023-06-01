@@ -10,6 +10,7 @@ return {
   config = function()
     local servers = {
       "lua_ls",
+      "rust_analyzer",
       "hls",
     }
 
@@ -21,8 +22,10 @@ return {
 
     require("mason").setup(mason_settings)
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", },
-      automatic_installation = true,
+      ensure_installed = { "lua_ls", "rust_analyzer", },
+      automatic_installation = {
+        exclude = { "hls", },
+      },
     })
 
     local diagnostic_signs = {
